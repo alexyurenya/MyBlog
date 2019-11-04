@@ -1,0 +1,63 @@
+﻿@model MyBlog.Models.MainView
+@{
+    ViewBag.Title = "Main Page";
+}
+<div style="margin: 20px">
+<form method="get">
+    <div class="form-inline form-group">
+
+        <label class="control-label">Name of article: </label>
+        @Html.TextBox("name", Model.Name, htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Category: </label>
+        @Html.DropDownList("category", Model.Categories as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+        <label class="control-label"> since: </label>
+        @Html.TextBox("startdateTime", Model.StartDate, htmlAttributes: new { @class = "form-control" })
+        <label class="control-label"> till: </label>
+        @Html.TextBox("enddateTime", Model.EndDate, htmlAttributes: new { @class = "form-control" })
+
+        
+
+        <input type="submit" value="Filtr" class="btn btn-default" />
+    </div>
+</form>
+</div>
+
+<table class="table" >
+    <tr style="font-weight:bold;"><td></td><td>Name</td><td>Category</td><td>Short Description</td></tr>
+    @foreach (var item in Model.Articles)
+    {
+        <tr>
+            <td>
+                @if (item.HeroImage != null)
+                {
+                    @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                                   + Convert.ToBase64String(item.HeroImage) + "\" />")
+                }
+            </td>
+            <td>@item.Name</td>
+            <td>@item.Category.Name</td>
+            <td>@item.ShortDescription</td>
+            <td> <a asp-action="ArticleDetail" asp-controller="Home" asp-route-id="@item.Id">Read more</a></td>
+
+        </tr>
+
+    }
+</table>
+
+<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active">
+            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>

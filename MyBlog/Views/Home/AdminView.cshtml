@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MyBlog.Models.Article>
+@{
+    ViewData["Title"] = "AdminView";
+}
+
+<h2>Admin View</h2>
+@*<a asp-action="CreateNewArticle">Create new article</a><div></div>*@
+
+<div><a href="@Url.Action("CreateNewArticle","Home")"
+   class="btn btn-primary btn-lg">Create new article</a>
+</div>
+
+<div style="margin: 20px">
+    <a href="@Url.Action("CategoryPage","Home")"
+       class="btn btn-primary btn-lg">Category</a>
+</div>
+
+<div style="margin: 20px">
+    <a href="@Url.Action("TagPage","Home")"
+       class="btn btn-primary btn-lg">Tags</a>
+</div>
+
+<div style="margin: 20px">
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+
+                    <a asp-action="EditArticle" asp-controller="Home" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DeleteArticle" asp-controller="Home" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

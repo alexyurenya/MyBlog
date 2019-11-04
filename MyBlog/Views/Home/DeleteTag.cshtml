@@ -1,0 +1,21 @@
+﻿@model MyBlog.Models.TagModel
+@{ ViewBag.Title = "Delete tag(s)";}
+
+@using (Html.BeginForm())
+{
+    <table>
+
+        @for(int i=0; i<Model.TagModelList.Count; i++)
+        {
+        <td>
+            @Html.CheckBoxFor(model => model.TagModelList[i].IsChecked)
+            <lable>@Model.TagModelList[i].Name</lable>
+            @Html.HiddenFor(model => model.TagModelList[i].Id)
+            @Html.HiddenFor(model => model.TagModelList[i].Name)
+        </td>
+        }
+
+</table>
+
+    <input type ="submit" value="Delete"/>
+}   

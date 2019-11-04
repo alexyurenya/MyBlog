@@ -1,0 +1,49 @@
+﻿@model MyBlog.Models.Article
+@{
+    ViewBag.Title = "Edit";
+   
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+<fieldset>
+    <legend>Name</legend>
+
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        Name <br />
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Short description <br />
+        @Html.EditorFor(model => model.ShortDescription)
+    </p>
+
+    <p>
+        Description  <br />
+        @Html.EditorFor(model => model.Description)
+    </p>
+    <p>
+        Date  <br />
+        @Html.EditorFor(model => model.Date)
+    </p>
+    <p>
+        Category <br />
+        @Html.DropDownListFor(model => model.CategoryId, ViewBag.Categories as SelectList)
+    </p>
+    @*<div class="form-group">
+        <label asp-for="Tags" class="control-label">Tags</label>
+        <select asp-for="Tags" asp-items="@ViewBag.Tags" multiple></select>
+    </div>*@
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</fieldset>
+}
+<div>
+    @Html.ActionLink("Back", "AdminView")
+</div>

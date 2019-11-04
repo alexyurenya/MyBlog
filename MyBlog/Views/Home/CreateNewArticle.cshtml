@@ -1,0 +1,50 @@
+﻿@model MyBlog.Models.ArticlesView
+@{
+    ViewData["Title"] = "CreateNewArticle";
+}
+
+<h2>CreateNewArticle</h2>
+
+<form asp-action="CreateNewArticle" asp-controller="home" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">The name of article</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDescription" class="control-label">Short description</label>
+        <input type="text" asp-for="ShortDescription" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Date" class="control-label">Date of creation</label>
+        <input type="date" asp-for="Date" class="form-control" />
+    </div>
+   
+
+    <div class="form-group">
+        <label asp-for="CategoryId" class="control-label">Category</label>
+        <select asp-for="CategoryId" asp-items="@ViewBag.Categories"></select>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Tags" class="control-label">Tags</label>
+        <select asp-for="Tags" asp-items="@ViewBag.Tags" multiple></select>
+    </div>
+
+    <p>
+        <label>Picture</label>
+        <input name="Image" type="file" class="form-control" />
+    </p>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-default" />
+    </div>
+</form>
+

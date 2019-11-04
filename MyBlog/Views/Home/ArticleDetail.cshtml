@@ -1,0 +1,87 @@
+﻿@model MyBlog.Models.ArticleImage
+@{
+    ViewData["Title"] = "Article Detail";
+}
+
+<div>
+    <h1 style="text-align: center; font-weight:bold;">@Html.DisplayFor(model => model.Artical.Name) </h1>
+    <div style="font-size:20px;">
+        
+        <div style="margin: 30px;">
+            <div style="float:left; margin: 0px 30px ;">
+                @if (Model.Image != null)
+                {
+                    @Html.Raw("<img style='width:200px; height:200px;' src=\"data:image/jpeg;base64,"
+                                     + Model.Image + "\" />")
+                }
+            </div>
+
+            @Html.DisplayFor(model => model.Artical.Description)
+        </div> 
+    </div>
+    <div style="padding: 50px; clear:both;">
+       <span style="font-weight:bold;">Tags:</span> 
+        @foreach (var t in Model.Artical.ArticlesTags)
+        {<div>@t.Tag.Name </div>}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div>
+    <dl class="dl-horizontal">
+        <dt></dt>
+        <dd style="font-size: 30px; text-align:center;">
+            @Html.DisplayFor(model => model.Artical.Name)
+        </dd>
+        <dt></dt>
+        <dd style="float:left">
+            @if (Model.Image != null)
+            {
+                @Html.Raw("<img style='width:180px; height:160px;' src=\"data:image/jpeg;base64,"
+                                 + Model.Image + "\" />")
+            }
+
+        </dd>
+        <dt></dt>
+        <dt></dt>
+        <dd>
+            @Html.DisplayFor(model => model.Artical.Description)
+        </dd>
+
+        <dt></dt>
+
+
+
+        <dd>
+            @foreach (var t in Model.Artical.ArticlesTags)
+            {@t.Tag.Name}
+
+        </dd>
+
+        <dt></dt>
+        @*<dd>
+            @Html.DisplayFor(model => model.Artical.Category.Name)
+        </dd>*@
+    @*</dl>   
+</div>*@
+
+
+
